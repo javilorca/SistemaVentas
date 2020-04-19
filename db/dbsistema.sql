@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-04-2020 a las 11:09:47
+-- Tiempo de generación: 19-04-2020 a las 16:53:27
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -267,12 +267,10 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`idusuario`, `nombre`, `tipo_documento`, `num_documento`, `direccion`, `telefono`, `email`, `cargo`, `login`, `clave`, `imagen`, `condicion`) VALUES
 (1, 'Javier Lorca', 'DNI', '50903613J', 'Florida 16', '622646844', 'javilorca26@gmail.com', 'Administrador', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', '1586875866.png', 1),
-(2, 'Puri Bonilla', 'DNI', '5262662', 'Florida 35', '622645222', 'puri@puri.es', 'Vendedora', 'puri', '277707ff18cba06fbae662801c55ed8fb6144d2da416fec2976e588a86ce3f50', '', 1),
-(5, 'Puri Bonillaa', 'DNI', '522552', 'Florida 35', '62655', 'puri@gmail.com', 'Vendedora', 'purii', '27a92b17cb2e3c6a30031fe2e9e3c0ceab2f215cdeb4b94367b5599df75d67b2', '', 1),
-(6, 'Puri Bonilla', 'DNI', '5255', 'Florida 35', '665522', 'puri@puri.es', 'Vendedora', 'puriii', 'c1264e6857069ae42908ef1bae83fc7fbd5326398d42e6145b49a3949546b221', '', 1),
+(2, 'P b', 'DNI', '5262662', 'sss', '622645222', 'ss@g.com', 'Vendedora', 'puri', 'c1264e6857069ae42908ef1bae83fc7fbd5326398d42e6145b49a3949546b221', '1587301825.jpg', 0),
 (7, 'Jlorca', 'DNI', '56222', 'Florida 35', '655225', 'javilorca@javilorca.es', 'Vendedor', 'javilorca', '8c4f9a713ac0abe9093f693f96f66731a0f2300203c98c8517efb5428d7dbed5', '1586875464.png', 1),
 (10, 'Javier Lorca Rubio', 'DNI', '5255552', 'Florida 36', '62655225', 'javi@javier.es', 'Administrados', 'administrador', 'b20b0f63ce2ed361e8845d6bf2e59811aaa06ec96bcdb92f9bc0c5a25e83c9a6', '', 1),
-(11, 'Luis Alejandro', 'DNI', '8558484874', '', '', '', '', 'almacenero', '19b9e4b4b69db1c5c38ea802a1754b4059b4df98cf5213c9c566801b397a952a', '1586877978.jpg', 1);
+(11, 'Luis Alejandro', 'DNI', '8558484874', '', '', '', '', 'almacenero', '70cbf0ce00f92daed0f1517ced4eacd6e053ddaf9e7097d910ec32778498b769', '1586877978.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -291,7 +289,6 @@ CREATE TABLE `usuario_permiso` (
 --
 
 INSERT INTO `usuario_permiso` (`idusuario_permiso`, `idusuario`, `idpermiso`) VALUES
-(18, 2, 4),
 (33, 10, 1),
 (34, 10, 2),
 (35, 10, 3),
@@ -310,9 +307,15 @@ INSERT INTO `usuario_permiso` (`idusuario_permiso`, `idusuario`, `idpermiso`) VA
 (93, 7, 4),
 (94, 7, 6),
 (95, 7, 7),
-(96, 11, 2),
-(97, 11, 3),
-(98, 11, 6);
+(129, 2, 1),
+(130, 2, 2),
+(131, 2, 3),
+(132, 2, 4),
+(133, 2, 6),
+(134, 2, 7),
+(135, 11, 2),
+(136, 11, 3),
+(137, 11, 6);
 
 -- --------------------------------------------------------
 
@@ -462,12 +465,12 @@ ALTER TABLE `persona`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `usuario_permiso`
 --
 ALTER TABLE `usuario_permiso`
-  MODIFY `idusuario_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `idusuario_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 --
 -- AUTO_INCREMENT de la tabla `venta`
 --
