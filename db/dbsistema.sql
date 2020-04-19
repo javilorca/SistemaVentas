@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-04-2020 a las 16:53:27
+-- Tiempo de generación: 19-04-2020 a las 17:39:36
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -42,10 +42,14 @@ CREATE TABLE `articulo` (
 --
 
 INSERT INTO `articulo` (`idarticulo`, `idcategoria`, `codigo`, `nombre`, `stock`, `descripcion`, `imagen`, `condicion`) VALUES
-(1, 10, '123456789', 'Impresora Epson x 2m', 16, 'Impresion', '1586446431.jpg', 1),
-(3, 6, '5252552', 'Impresora Epson M300', -3, 'Impresora', '1586449805.png', 1),
-(4, 1, '966959', 'Cable impresora', -1, 'Cable para impresora', '1586450089.jpg', 1),
-(5, 1, '555585', 'Cable red', 0, 'Cable conexión de red', '1587132938.jpg', 1);
+(1, 10, '123456789', 'Impresora Epson x 2m', 15, 'Impresion', '1586446431.jpg', 1),
+(3, 6, '5252552', 'Impresora Epson M300', 5, 'Impresora', '1586449805.png', 0),
+(4, 1, '966959', 'Cable impresora', 6, 'Cable para impresora', '1586450089.jpg', 1),
+(5, 1, '555585', 'Cable red', 0, 'Cable conexión de red', '1587132938.jpg', 1),
+(6, 6, '5859874', 'Epson 4500 BJ', 11, 'V6', '1587308995.png', 1),
+(10, 1, '85555445', 'Cable de red', 30, 'Cable de conexión', '1587309153.jpg', 1),
+(11, 10, '96696', 'Impresora Epson', 5, 'V8', '1587309185.png', 1),
+(12, 10, '877774', 'Impresora Epson C300', 6, '300', '', 1);
 
 -- --------------------------------------------------------
 
@@ -65,13 +69,12 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`idcategoria`, `nombre`, `descripcion`, `condicion`) VALUES
-(1, 'Categoria 1', 'Desc 1', 1),
-(2, '', '', 0),
-(6, 'Categoria 3', 'desc cat 3', 1),
-(7, 'Categoria 4', 'desc cat 4', 1),
-(8, 'Categoria 5', 'desc cat 5', 1),
-(9, 'Categoria 6', 'desc cat 6', 1),
-(10, 'Dispositivos electronicos', '', 1);
+(1, 'Cables y conexiones', 'Fuentes de alimentación y conexiones de red', 1),
+(6, 'Impresoras', '', 1),
+(7, 'Discos duros', 'Internos y externos', 1),
+(8, 'Pantallas', 'Pantallas de PC', 1),
+(9, 'Tablest', '', 1),
+(10, 'Monitores y pantallas', 'Pantallas de ordenador, TV...', 1);
 
 -- --------------------------------------------------------
 
@@ -97,7 +100,9 @@ INSERT INTO `detalle_ingreso` (`iddetalle_ingreso`, `idingreso`, `idarticulo`, `
 (2, 1, 4, 1, '5.00', '12.00'),
 (3, 2, 4, 7, '20.00', '30.00'),
 (4, 2, 1, 7, '500.00', '600.00'),
-(5, 3, 1, 15, '500.00', '600.00');
+(5, 3, 1, 15, '500.00', '600.00'),
+(6, 4, 1, 1, '300.00', '400.00'),
+(7, 4, 6, 1, '300.00', '400.00');
 
 --
 -- Disparadores `detalle_ingreso`
@@ -133,7 +138,8 @@ INSERT INTO `detalle_venta` (`iddetalle_venta`, `idventa`, `idarticulo`, `cantid
 (1, 1, 3, 2, '300.00', '10.00'),
 (2, 1, 4, 1, '30.00', '0.00'),
 (3, 2, 5, 2, '8.00', '0.00'),
-(4, 2, 3, 1, '250.00', '0.00');
+(4, 2, 3, 1, '250.00', '0.00'),
+(5, 3, 1, 2, '600.00', '0.00');
 
 --
 -- Disparadores `detalle_venta`
@@ -172,7 +178,8 @@ CREATE TABLE `ingreso` (
 INSERT INTO `ingreso` (`idingreso`, `idproveedor`, `idusuario`, `tipo_comprobante`, `serie_comprobante`, `num_comprobante`, `fecha_hora`, `impuesto`, `total_compra`, `estado`) VALUES
 (1, 1, 1, 'Factura', '001', '002', '2020-04-17 00:00:00', '21.00', '25.00', 'Aceptado'),
 (2, 1, 1, 'Ticket', '001', '003', '2020-04-18 00:00:00', '18.00', '3640.00', 'Aceptado'),
-(3, 2, 1, 'Factura', '001', '004', '2020-04-18 00:00:00', '21.00', '7500.00', 'Aceptado');
+(3, 2, 1, 'Factura', '001', '004', '2020-04-18 00:00:00', '21.00', '7500.00', 'Aceptado'),
+(4, 2, 13, 'Factura', '003', '005', '2020-04-19 00:00:00', '21.00', '600.00', 'Aceptado');
 
 --
 -- Disparadores `ingreso`
@@ -234,7 +241,7 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`idpersona`, `tipo_persona`, `nombre`, `tipo_documento`, `num_documento`, `direccion`, `telefono`, `email`) VALUES
-(1, 'Proveedor', 'Inversiones Santa Ana', 'Ruc', '123456', 'Santa Ana 30', '625685894', 'imversionessantaana@gmail.com'),
+(1, 'Proveedor', 'Inversiones Santa Ana', 'DNI', '065522', 'Santa Ana 30', '625685894', 'imversionessantaana@gmail.com'),
 (2, 'Proveedor', 'Inversiones Leon', 'DNI', '25254584', 'Leonisa 34', '625485548', 'email'),
 (3, 'Proveedor', 'Danone', 'DNI', '652252', 'Madrid', '6525525452', 'info@danone.es'),
 (4, 'Cliente', 'Jimenez Losada', 'DNI', '526552542', '', '6525245443', 'jimenez@losada.es'),
@@ -270,7 +277,8 @@ INSERT INTO `usuario` (`idusuario`, `nombre`, `tipo_documento`, `num_documento`,
 (2, 'P b', 'DNI', '5262662', 'sss', '622645222', 'ss@g.com', 'Vendedora', 'puri', 'c1264e6857069ae42908ef1bae83fc7fbd5326398d42e6145b49a3949546b221', '1587301825.jpg', 0),
 (7, 'Jlorca', 'DNI', '56222', 'Florida 35', '655225', 'javilorca@javilorca.es', 'Vendedor', 'javilorca', '8c4f9a713ac0abe9093f693f96f66731a0f2300203c98c8517efb5428d7dbed5', '1586875464.png', 1),
 (10, 'Javier Lorca Rubio', 'DNI', '5255552', 'Florida 36', '62655225', 'javi@javier.es', 'Administrados', 'administrador', 'b20b0f63ce2ed361e8845d6bf2e59811aaa06ec96bcdb92f9bc0c5a25e83c9a6', '', 1),
-(11, 'Luis Alejandro', 'DNI', '8558484874', '', '', '', '', 'almacenero', '70cbf0ce00f92daed0f1517ced4eacd6e053ddaf9e7097d910ec32778498b769', '1586877978.jpg', 1);
+(11, 'Luis Alejandro', 'DNI', '8558484874', '', '', '', '', 'almacenero', '70cbf0ce00f92daed0f1517ced4eacd6e053ddaf9e7097d910ec32778498b769', '1586877978.jpg', 1),
+(13, 'Miguel Hernandez', 'DNI', '52652542X', 'Manuel Azaña, 45 Valencia', '600000000', 'miguelh@gmail.com', 'Vendedor', 'miguel', '5ef68465886fa04d3e0bbe86b59d964dd98e5775e95717df978d8bedee6ff16c', '1587308485.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -315,7 +323,13 @@ INSERT INTO `usuario_permiso` (`idusuario_permiso`, `idusuario`, `idpermiso`) VA
 (134, 2, 7),
 (135, 11, 2),
 (136, 11, 3),
-(137, 11, 6);
+(137, 11, 6),
+(138, 13, 1),
+(139, 13, 2),
+(140, 13, 3),
+(141, 13, 4),
+(142, 13, 6),
+(143, 13, 7);
 
 -- --------------------------------------------------------
 
@@ -342,7 +356,8 @@ CREATE TABLE `venta` (
 
 INSERT INTO `venta` (`idventa`, `idcliente`, `idusuario`, `tipo_comprobante`, `serie_comprobante`, `num_comprobante`, `fecha_hora`, `impuesto`, `total_venta`, `estado`) VALUES
 (1, 4, 1, 'Factura', '001', '002', '2020-04-18 00:00:00', '21.00', '620.00', 'Anulado'),
-(2, 5, 1, 'Ticket', '002', '005', '2020-04-18 00:00:00', '21.00', '266.00', 'Aceptado');
+(2, 5, 1, 'Ticket', '002', '005', '2020-04-18 00:00:00', '21.00', '266.00', 'Aceptado'),
+(3, 5, 13, 'Ticket', '001', '006', '2020-04-19 00:00:00', '21.00', '1200.00', 'Aceptado');
 
 --
 -- Índices para tablas volcadas
@@ -430,7 +445,7 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de la tabla `articulo`
 --
 ALTER TABLE `articulo`
-  MODIFY `idarticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idarticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
@@ -440,17 +455,17 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `detalle_ingreso`
 --
 ALTER TABLE `detalle_ingreso`
-  MODIFY `iddetalle_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `iddetalle_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `detalle_venta`
 --
 ALTER TABLE `detalle_venta`
-  MODIFY `iddetalle_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `iddetalle_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `ingreso`
 --
 ALTER TABLE `ingreso`
-  MODIFY `idingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `permiso`
 --
@@ -465,17 +480,17 @@ ALTER TABLE `persona`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `usuario_permiso`
 --
 ALTER TABLE `usuario_permiso`
-  MODIFY `idusuario_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `idusuario_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
 --
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `idventa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idventa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Restricciones para tablas volcadas
 --
